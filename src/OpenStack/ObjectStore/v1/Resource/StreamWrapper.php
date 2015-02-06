@@ -832,7 +832,7 @@ class StreamWrapper
 
                 $this->objStream = $tmpStream;
             } else {
-                $this->objStream = $this->obj->stream();
+                $this->objStream = $stream;
             }
 
             // Append mode requires seeking to the end.
