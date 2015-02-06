@@ -444,7 +444,9 @@ class RemoteObject extends Object
     protected function localFileStream()
     {
         $tmp = fopen('php://temp', 'rw');
-        fwrite($tmp, $this->content(), $this->contentLength());
+        while (!$this->content->eof()) {
+            fwrite($tmp, $this->content->read(8096));
+        }
         rewind($tmp);
 
         return $tmp;
